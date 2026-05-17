@@ -389,14 +389,6 @@ def render_header() -> None:
         .stTabs {
             width: 100%;
         }
-        div[data-baseweb="tab-list"] {
-            flex-wrap: wrap;
-            gap: 0.35rem;
-        }
-        button[data-baseweb="tab"] {
-            white-space: normal;
-            min-height: 2.5rem;
-        }
         .block-container {
             padding-bottom: 4.25rem;
         }
@@ -591,19 +583,18 @@ def render_timeline(df: pd.DataFrame, updates_df: pd.DataFrame) -> None:
     )
 
     project_info = df[df["compagnie_projet"] == company].iloc[0]
-    st.markdown(
-        f"""
-        <div class="card">
-            <strong>{project_info['compagnie_projet']}</strong><br>
-            Secteur: {project_info.get('secteur') or '-'}<br>
-            Ressource: {project_info.get('ressource_cible') or '-'}<br>
-            Objectif: {project_info.get('objectif') or '-'}<br>
-            Zone d'interet: {project_info.get('zone_interet') or '-'}<br>
-            Statut actuel: {project_info.get('statut_actuel') or '-'}
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+    st.subheader(project_info["compagnie_projet"])
+    info_col1, info_col2 = st.columns(2)
+    with info_col1:
+        st.write(f"**Secteur:** {project_info.get('secteur') or '-'}")
+        st.write(f"**Ressource:** {project_info.get('ressource_cible') or '-'}")
+        st.write(f"**Objectif:** {project_info.get('objectif') or '-'}")
+    with info_col2:
+        st.write(f"**Zone d'interet:** {project_info.get('zone_interet') or '-'}")
+        st.write(f"**Statut actuel:** {project_info.get('statut_actuel') or '-'}")
+        st.write(
+            f"**Date de reference:** {format_date(project_info.get('date_reference'))}"
+        )
 
     project_updates = updates_df[updates_df["compagnie_projet"] == company].copy()
     if project_updates.empty:
@@ -611,6 +602,7 @@ def render_timeline(df: pd.DataFrame, updates_df: pd.DataFrame) -> None:
         return
 
     project_updates["date_mise_a_jour"] = project_updates["date_mise_a_jour"].apply(format_date)
+    st.markdown("#### Historique des mises a jour")
     st.dataframe(
         project_updates[["ordre_mise_a_jour", "date_mise_a_jour", "activite"]]
         .rename(
@@ -659,22 +651,17 @@ def main() -> None:
 
     render_metrics(filtered_projects, filtered_updates)
 
-    views = [
-        "Tableau de bord",
-        "Table des projets",
-        "Timeline par projet",
-    ]
-    selected_view = st.selectbox(
-        "Choisir une vue",
-        views,
-        index=0,
+    tab1, tab2, tab3 = st.tabs(
+        ["Tableau de bord", "Table des projets", "Timeline par projet"]
     )
 
-    if selected_view == "Tableau de bord":
+    with tab1:
         render_dashboard(filtered_projects, filtered_updates)
-    elif selected_view == "Table des projets":
+
+    with tab2:
         render_projects_table(filtered_projects)
-    else:
+
+    with tab3:
         render_timeline(filtered_projects, filtered_updates)
 
 
