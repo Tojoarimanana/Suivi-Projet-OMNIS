@@ -52,6 +52,42 @@ DISPLAY_LABELS = {
 }
 
 OMNIS_LOGO_PATH = Path(__file__).with_name("logo.svg")
+OMNIS_LOGO_SVG_FALLBACK = """<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+ viewBox="0 0 58.1 74.7" style="enable-background:new 0 0 58.1 74.7;" xml:space="preserve">
+<path class="st0" d="M34.7,24.2c-0.6-1-4.8-7.4-5.7-8.4c0,0-2.7,3.7-5.5,8.2l0,0c-1,1.6-1.6,3.4-1.6,5.3c0,4.7,3.2,8.4,7.1,8.4 s7.1-3.8,7.1-8.4C36.1,27.4,35.6,25.7,34.7,24.2z"/>
+<g>
+<path class="st2" d="M24.9,20.2c7.3,4.1-2.2,8.1,0.3,16.6C19.3,25.3,26.3,25.3,24.9,20.2z"/>
+<path class="st2" d="M29.6,25.7c3.8,4.6-3.6,4.8-4.1,11.1C24.5,27.6,29.1,29.5,29.6,25.7z"/>
+<path class="st2" d="M36.9,27c1.5,7.4-6.9,3.3-11.3,10C30,26.1,34.3,30.9,36.9,27z"/>
+</g>
+<path class="st0 rond" d="M28.8,5.8c-10.1,0-18.3,8.2-18.3,18.3c0,10.1,8.2,18.3,18.3,18.3c10.1,0,18.3-8.2,18.3-18.3 C47.1,14,38.9,5.8,28.8,5.8C28.8,5.8,28.8,5.8,28.8,5.8z M40.8,28.8c-0.7-5.4-3.9-13.2-11.8-16.6c8.1,5.7,10.5,17.5,5.5,23.4 c-6.4,3.2-14.1,0.6-17.3-5.8s-0.6-14.1,5.8-17.3s14.1-0.6,17.3,5.8C42,21.6,42.2,25.4,40.8,28.8z"/>
+<path class="st3 diam2" d="M29.2,52.7C13.1,52.6,0,39.6,0,23.5v33.8h47.7l-6-7.5C37.8,51.7,33.5,52.7,29.2,52.7z"/>
+<path class="st4 diam2" d="M44.6,41.4L44.6,41.4l-0.5-0.6c-9.8,7.9-24.2,6.4-32.2-3.4S5.6,13.1,15.4,5.2l0.3-0.3L11.9,0 C9.8,1.5,8,3.2,6.4,5.2c-10.1,12.6-8.1,30.9,4.5,41c8.7,7,20.7,8.4,30.8,3.6l6,7.5h9.6L44.6,41.4z"/>
+<g>
+<path class="st0 lettre1" d="M7.4,60.3c-1.9,0-3.7,0.7-5,2.1c-1.3,1.4-2,3.2-2,5.1c0,1.9,0.7,3.7,2,5c1.3,1.4,3.1,2.2,5,2.1 c1.9,0,3.7-0.7,5.1-2.1c1.3-1.3,2.1-3.1,2.1-5c0-1.9-0.7-3.7-2.1-5.1C11.2,61.1,9.3,60.3,7.4,60.3z M7.4,72.2 c-1.2,0-2.4-0.5-3.2-1.4c-1.8-1.9-1.8-4.8,0-6.7c0.8-0.9,2-1.4,3.2-1.4c1.2,0,2.4,0.5,3.2,1.4c0.9,0.9,1.3,2.1,1.3,3.3 c0,1.2-0.5,2.4-1.3,3.3C9.8,71.7,8.6,72.2,7.4,72.2L7.4,72.2z"/>
+<path class="st0 lettre2" d="M28.4,61.1c-0.3-0.5-0.8-0.8-1.4-0.8c-0.5,0-1.1,0.2-1.4,0.6c-0.3,0.5-0.5,1-0.6,1.5l-2.3,7.7l-2.3-7.7 c-0.1-0.5-0.3-1.1-0.6-1.5c-0.3-0.4-0.9-0.6-1.4-0.6c-0.6,0-1.1,0.2-1.4,0.7c-0.2,0.4-0.4,0.8-0.4,1.3L15,74.5h2.6l1.2-9l2.1,7.1 c0.1,0.5,0.3,1,0.6,1.4c0.3,0.4,0.8,0.6,1.3,0.6c0.5,0,1-0.2,1.3-0.6c0.3-0.4,0.5-0.9,0.6-1.4l2.1-7.1l1.2,9h2.6l-1.6-12.1 C28.8,61.9,28.7,61.5,28.4,61.1z"/>
+<path class="st0 lettre3" d="M39,69.8l-3.8-8.2c-0.2-0.4-0.4-0.7-0.7-0.9c-0.3-0.2-0.7-0.3-1.1-0.3c-0.5,0-1.1,0.2-1.4,0.6 c-0.3,0.4-0.4,0.8-0.4,1.2v12.3h2.5v-9.3l3.8,8.1c0.2,0.4,0.5,0.8,0.8,1.1c0.3,0.2,0.7,0.3,1.1,0.3c0.9,0.1,1.7-0.6,1.8-1.6 c0-0.1,0-0.2,0-0.2V60.3H39V69.8z"/>
+<rect x="43.8" y="60.5" class="st0 lettre4" width="2.6" height="13.9"/>
+<path class="st0 lettre5" d="M55.7,66.8h-0.1L52,65.7c-1.3-0.5-1.3-1.1-1.3-1.4c0-0.3,0.1-0.7,0.3-0.9c0.4-0.3,0.9-0.4,1.4-0.3h4.9v-2.5 h-5.2c-1,0-2,0.3-2.8,0.9c-0.8,0.7-1.3,1.7-1.3,2.8c0,1.6,0.9,3.1,2.5,3.7l3.6,1.2c1.2,0.5,1.3,1.1,1.3,1.6c0.1,0.4-0.1,0.8-0.4,1 c-0.5,0.3-1.2,0.5-1.8,0.4h-5.2v2.5h5.3c1.2,0.1,2.4-0.3,3.3-1c0.9-0.7,1.4-1.8,1.3-3C58.1,68.9,57.2,67.4,55.7,66.8z"/>
+</g>
+<style type="text/css">
+.st0{fill:#1F526A;}.st2{fill:#FFFFFF;}.st3{fill:#41A62A;}.st4{fill:#C90019;}
+.diam2 { animation-name: diamondOpacity; animation-duration: 6s; animation-from: 5s; animation-to: 10s; animation-iteration-count: 2; }
+@keyframes diamondOpacity { 0% { opacity: 1; } 50% { opacity: 0.1; } 100% { opacity: 1; } }
+.rond { -moz-transform-origin:43% 50%; animation: flip_right 1.8s 1 forwards; animation-delay: 0s; }
+.lettre1{ transform-origin:43% 50%; -moz-transform-origin:43% 50%; animation: flip_right 1.8s 2 forwards; animation-delay: 2s; }
+.lettre2{ transform-origin:43% 50%; -moz-transform-origin:43% 50%; animation: flip_right 1.8s 2 forwards; animation-delay: 2.5s; }
+.lettre3{ transform-origin:43% 50%; -moz-transform-origin:43% 50%; animation: flip_right 1.8s 2 forwards; animation-delay: 3s; }
+.lettre4{ transform-origin:43% 50%; -moz-transform-origin:43% 50%; animation: flip_right 1.8s 2 forwards; animation-delay: 3.5s; }
+.lettre5{ transform-origin:43% 50%; -moz-transform-origin:43% 50%; animation: flip_right 1.8s 2 forwards; animation-delay: 4s; }
+@keyframes flip_right {
+0% {transform: perspective(2000px) rotateY(90deg) skewY(-3.5deg)}
+30% {transform:perspective(2000px) rotateY(-25deg) skewY(-0.8deg)}
+50% {transform:perspective(2000px) rotateY(20deg) skewY(0.8deg)}
+70% {transform:perspective(2000px) rotateY(-10deg) skewY(-0.8deg)}
+100% {transform:perspective(2000px) rotateY(0deg)}
+}
+</style></svg>"""
 
 
 def normalize_text(value: object) -> str | None:
@@ -226,7 +262,10 @@ def format_date(value: object) -> str:
 
 
 def get_logo_data_uri() -> str:
-    svg_bytes = OMNIS_LOGO_PATH.read_bytes()
+    if OMNIS_LOGO_PATH.exists():
+        svg_bytes = OMNIS_LOGO_PATH.read_bytes()
+    else:
+        svg_bytes = OMNIS_LOGO_SVG_FALLBACK.encode("utf-8")
     encoded = base64.b64encode(svg_bytes).decode("ascii")
     return f"data:image/svg+xml;base64,{encoded}"
 
