@@ -389,6 +389,14 @@ def render_header() -> None:
         .stTabs {
             width: 100%;
         }
+        div[data-baseweb="tab-list"] {
+            flex-wrap: wrap;
+            gap: 0.35rem;
+        }
+        button[data-baseweb="tab"] {
+            white-space: normal;
+            min-height: 2.5rem;
+        }
         .block-container {
             padding-bottom: 4.25rem;
         }
@@ -651,18 +659,24 @@ def main() -> None:
 
     render_metrics(filtered_projects, filtered_updates)
 
-    tab1, tab2, tab3 = st.tabs(
-        ["Tableau de bord", "Table des projets", "Timeline par projet"]
+    views = [
+        "Tableau de bord",
+        "Table des projets",
+        "Timeline par projet",
+    ]
+    selected_view = st.selectbox(
+        "Choisir une vue",
+        views,
+        index=0,
     )
 
-    with tab1:
+    if selected_view == "Tableau de bord":
         render_dashboard(filtered_projects, filtered_updates)
-
-    with tab2:
+    elif selected_view == "Table des projets":
         render_projects_table(filtered_projects)
-
-    with tab3:
+    else:
         render_timeline(filtered_projects, filtered_updates)
+
 
 
 if __name__ == "__main__":
