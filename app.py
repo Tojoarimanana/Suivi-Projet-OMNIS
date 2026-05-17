@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+import base64
 from dataclasses import dataclass
+from pathlib import Path
 
 import pandas as pd
 import streamlit as st
@@ -49,7 +51,7 @@ DISPLAY_LABELS = {
     "derniere_mise_a_jour": "Derniere mise a jour",
 }
 
-OMNIS_LOGO_URL = "https://omnis.mg/logo.svg"
+OMNIS_LOGO_PATH = Path(__file__).with_name("logo.svg")
 
 
 def normalize_text(value: object) -> str | None:
@@ -223,6 +225,12 @@ def format_date(value: object) -> str:
     return pd.to_datetime(value).strftime("%d/%m/%Y")
 
 
+def get_logo_data_uri() -> str:
+    svg_bytes = OMNIS_LOGO_PATH.read_bytes()
+    encoded = base64.b64encode(svg_bytes).decode("ascii")
+    return f"data:image/svg+xml;base64,{encoded}"
+
+
 def to_downloadable_excel(df: pd.DataFrame) -> bytes:
     return df.to_csv(index=False).encode("utf-8-sig")
 
@@ -279,6 +287,7 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def render_header() -> None:
+    logo_src = get_logo_data_uri()
     header_html = """
         <style>
         .app-header {
@@ -410,7 +419,7 @@ def render_header() -> None:
         </div>
     """
     st.markdown(
-        header_html.replace("__LOGO__", OMNIS_LOGO_URL),
+        header_html.replace("__LOGO__", logo_src),
         unsafe_allow_html=True,
     )
     st.markdown(
